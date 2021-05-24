@@ -62,17 +62,18 @@ windows:
 #     paths:
 #       - build/mac
 
-# web:
-#   only:
-#     - master
-#   stage: web
-#   script:
-#     - mkdir -v -p build/web
-#     - godot -v --export "HTML5" build/web/index.html
-#   artifacts:
-#     name: $EXPORT_NAME-$CI_JOB_NAME
-#     paths:
-#       - build/web
+web:
+  when: manual
+  only:
+    - master
+  stage: web
+  script:
+    - mkdir -v -p build/web
+    - godot -v --export "HTML5" build/web/index.html
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - build/web
 
 # # GitHub Pages Deploy
 # deploy-github-pages:
@@ -110,6 +111,13 @@ windows:
 #     paths:
 #       - public
 # # Itch.io Deploy
+itchio:linux:
+  stage: deploy
+  script:
+    - butler push ./build/web $ITCHIO_USERNAME/$ITCHIO_GAME:web
+  dependencies:
+    - web
+
 # itchio:linux:
 #   stage: deploy
 #   script:
