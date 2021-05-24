@@ -18,7 +18,6 @@ before_script:
   - rm .git/hooks/post-checkout || true
 
 web:
-  when: manual
   only:
     - master
   stage: build
