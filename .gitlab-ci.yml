@@ -7,6 +7,7 @@ cache:
     - .import/
 
 stages:
+  - build
   - deploy
 
 variables:
@@ -20,7 +21,7 @@ web:
   when: manual
   only:
     - master
-  stage: deploy
+  stage: build
   script:
     - mkdir -v -p build/web
     - godot -v --export "HTML5" build/web/index.html
@@ -31,7 +32,6 @@ web:
 
 itchio:web:
   stage: deploy 
-  when: manual
   script:
     - butler push ./build/web $ITCHIO_USERNAME/$ITCHIO_GAME:web
   dependencies:
