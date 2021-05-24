@@ -112,6 +112,7 @@ web:
 #       - public
 # # Itch.io Deploy
 itchio:linux:
+  when: manual
   stage: deploy
   script:
     - butler push ./build/web $ITCHIO_USERNAME/$ITCHIO_GAME:web
