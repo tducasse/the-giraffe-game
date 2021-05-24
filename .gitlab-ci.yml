@@ -11,6 +11,7 @@ stages:
   # - server
   # - pages
   - windows
+  - itchio:web
 
 variables:
   EXPORT_NAME: godot-starter
@@ -111,7 +112,7 @@ web:
 #     paths:
 #       - public
 # # Itch.io Deploy
-itchio:linux:
+itchio:web:
   stage: deploy
   script:
     - butler push ./build/web $ITCHIO_USERNAME/$ITCHIO_GAME:web
