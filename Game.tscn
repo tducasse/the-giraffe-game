@@ -1,19 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bottom.tscn" type="PackedScene" id=3]
+[ext_resource path="res://bg.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 112, 280 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 88, 240 )
 
 [node name="Game" type="Node2D"]
 
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 955.693, 538.436 )
+scale = Vector2( 1.91012, 1.08543 )
+texture = ExtResource( 4 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 872, 1048 )
+position = Vector2( 880, 1024 )
 
 [node name="Left" type="StaticBody2D" parent="."]
 
@@ -27,6 +33,6 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
 position = Vector2( 2016, 1024 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Spawner" parent="." instance=ExtResource( 2 )]
