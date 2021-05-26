@@ -32,15 +32,15 @@ extents = Vector2( 88, 240 )
 script = ExtResource( 5 )
 
 [node name="bg" type="Sprite" parent="."]
-position = Vector2( 955.693, 538.436 )
-scale = Vector2( 1.91012, 1.08543 )
+position = Vector2( 651.005, 363.82 )
+scale = Vector2( 1.31503, 0.744387 )
 texture = ExtResource( 4 )
 
 [node name="Growth" type="TextureProgress" parent="."]
-margin_left = 11.0
-margin_top = 871.57
-margin_right = 61.0
-margin_bottom = 1071.57
+margin_left = 10.0
+margin_top = 513.892
+margin_right = 60.0
+margin_bottom = 713.892
 rect_min_size = Vector2( 50, 200 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -54,22 +54,24 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 880, 1024 )
+position = Vector2( 612.73, 651.604 )
 
 [node name="Left" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
-position = Vector2( -120, 1016 )
+position = Vector2( -125.657, 513.892 )
 shape = SubResource( 1 )
 
 [node name="Bottom" parent="." instance=ExtResource( 3 )]
+position = Vector2( 10, -486.49 )
 
 [node name="Right" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
-position = Vector2( 2016, 1024 )
+position = Vector2( 1389.5, 578.252 )
 shape = SubResource( 2 )
 
 [node name="Spawner" parent="." instance=ExtResource( 2 )]
 
+[connection signal="end_game" from="Player" to="." method="_on_Player_end_game"]
 [connection signal="item_picked" from="Spawner" to="." method="_on_Spawner_item_picked"]
