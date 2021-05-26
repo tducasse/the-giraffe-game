@@ -12,6 +12,8 @@ var RATE_GOOD = 0.5
 
 var rng = null
 
+signal item_picked(type)
+
 
 func _ready():
 	rng = RandomNumberGenerator.new()
@@ -49,6 +51,11 @@ func spawn_random_item():
 	item.position = get_random_position()
 	add_child(item)
 	item.init(get_random_type(), get_random_speed())
+	item.connect("item_picked", self, "on_item_picked")
+
+
+func on_item_picked(type):
+	emit_signal("item_picked", type)
 
 
 func _on_Timer_timeout():

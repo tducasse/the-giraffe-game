@@ -10,12 +10,4 @@ func _process(_delta):
 
 
 func process_move():
-	var input_vector = Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		0
-	)
-	move(input_vector)
-
-
-func move(value):
-	velocity = move_and_slide(value * speed)
+	position = Vector2(get_viewport().get_mouse_position().x, position.y)

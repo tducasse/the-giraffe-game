@@ -6,6 +6,8 @@ var type = null
 var food = preload("res://food.png")
 var bad = preload("res://bad.png")
 
+signal item_picked(type)
+
 
 func init(type_param, speed_param):
 	type = type_param
@@ -21,7 +23,5 @@ func set_sprite():
 
 
 func _on_Area2D_body_entered(_body):
-	# depending on what the current item is,
-	# send a signal to the game manager
-	# and then destroy the object
+	emit_signal("item_picked", type)
 	queue_free()
