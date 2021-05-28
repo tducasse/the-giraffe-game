@@ -2,11 +2,16 @@ extends RigidBody2D
 
 onready var ItemSprite = $Sprite
 
-var type = null
+export var type : String
 var food = preload("res://food.png")
 var bad = preload("res://bad.png")
 
 signal item_picked(type)
+
+
+func _ready():
+	if type == "goal":
+		gravity_scale = 0
 
 
 func init(type_param, speed_param):
