@@ -13,8 +13,12 @@ onready var LevelUp = $LevelUp
 onready var LevelDown = $LevelDown
 onready var Pickup = $Pickup
 
+onready var Spawner = $Spawner
+
 var HP_LOSS = 30
 var HP_GAIN = 50
+var level = 0
+var actual_level = 0
 
 
 func _ready():
@@ -54,9 +58,27 @@ func gain_hp():
 func grow():
 	LevelUp.play()
 	Player.add_neck()
+	level_up()
+
+
+func level_up():
+	if level >= 10:
+		return
+	if level > actual_level:
+		actual_level = actual_level + 1
+		return
+	level = level + 1
+	actual_level = level
+	HP_GAIN = max(HP_GAIN - level * 5, 10)
+	Spawner.level_up(level)
+
+
+func level_down():
+	actual_level = actual_level -1
 
 
 func shrink():
+	level_down()
 	LevelDown.play()
 	Player.shrink()
 

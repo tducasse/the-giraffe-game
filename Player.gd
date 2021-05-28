@@ -24,13 +24,13 @@ func process_move():
 
 
 func add_neck():
-	Neck.rect_size.y = Neck.rect_size.y + neck_size
-	position.y = position.y - neck_size
+	Neck.rect_size.y = Neck.rect_size.y + neck_size *2
+	position.y = position.y - neck_size * 2
 	
 
 func remove_neck():
-	Neck.rect_size.y = Neck.rect_size.y - neck_size
-	position.y = position.y + neck_size
+	Neck.rect_size.y = Neck.rect_size.y - neck_size * 2
+	position.y = position.y + neck_size * 2
 
 
 func shrink():
