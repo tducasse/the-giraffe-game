@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shaded_medal1.png-834dd678e256527c421a8f1643103556.stex"
+path="res://.import/goal.png-d8026b4c83cd0c976a2c07258ba1a29e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaded_medal1.png"
-dest_files=[ "res://.import/shaded_medal1.png-834dd678e256527c421a8f1643103556.stex" ]
+source_file="res://goal.png"
+dest_files=[ "res://.import/goal.png-d8026b4c83cd0c976a2c07258ba1a29e.stex" ]
 
 [params]
 

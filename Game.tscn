@@ -6,7 +6,7 @@
 [ext_resource path="res://bg.png" type="Texture" id=4]
 [ext_resource path="res://Game.gd" type="Script" id=5]
 [ext_resource path="res://Item.tscn" type="PackedScene" id=6]
-[ext_resource path="res://shaded_medal1.png" type="Texture" id=7]
+[ext_resource path="res://goal.png" type="Texture" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0 )
@@ -90,6 +90,7 @@ visible = false
 [node name="Spawner" parent="." instance=ExtResource( 2 )]
 
 [connection signal="end_game" from="Player" to="." method="_on_Player_end_game"]
+[connection signal="item_picked" from="Goal" to="." method="_on_Goal_item_picked"]
 [connection signal="item_picked" from="Spawner" to="." method="_on_Spawner_item_picked"]
 
 [editable path="Goal"]

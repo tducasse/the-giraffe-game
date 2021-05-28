@@ -42,3 +42,7 @@ func shrink():
 
 func _on_Player_end_game():
 	print("lost_game")
+
+
+func _on_Goal_item_picked(type):
+	print("win game")
