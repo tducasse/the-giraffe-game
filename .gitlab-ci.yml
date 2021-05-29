@@ -7,11 +7,13 @@ cache:
     - .import/
 
 stages:
-  - build
-  - deploy
+  - web
+  - windows
+  - linux
+  - mac
 
 variables:
-  EXPORT_NAME: godot-starter
+  EXPORT_NAME: tally-the-giraffe
 
 before_script:
   # Remove lfs hook (https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/issues/2245)
@@ -20,18 +22,38 @@ before_script:
 web:
   only:
     - master
-  stage: build
+  stage: web
   script:
     - mkdir -v -p build/web
     - godot -v --export "HTML5" build/web/index.html
-  artifacts:
-    name: $EXPORT_NAME-$CI_JOB_NAME
-    paths:
-      - build/web
-
-itchio:web:
-  stage: deploy 
-  script:
     - butler push ./build/web $ITCHIO_USERNAME/$ITCHIO_GAME:web
-  dependencies:
-    - web
+
+mac:
+  when: manual
+  only:
+    - master
+  stage: mac
+  script:
+    - mkdir -v -p build/mac
+    - godot -v --export "Mac OSX" build/mac/$EXPORT_NAME.zip
+    - butler push ./build/mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
+
+windows:
+  when: manual
+  only:
+    - master
+  stage: windows
+  script:
+    - mkdir -v -p build/windows
+    - godot -v --export "Windows Desktop" build/windows/$EXPORT_NAME.exe
+    - butler push ./build/windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
+
+linux:
+  when: manual
+  only:
+    - master
+  stage: linux
+  script:
+    - mkdir -v -p build/linux
+    - godot -v --export "Linux/X11" build/linux/$EXPORT_NAME.x86_64
+    - butler push ./build/linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
