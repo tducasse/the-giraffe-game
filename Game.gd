@@ -3,6 +3,7 @@ extends Node2D
 
 onready var Growth = $Growth
 onready var Player = $Player
+onready var Score = $Score
 
 onready var Music = $Music
 onready var Lost = $Lost
@@ -14,6 +15,7 @@ onready var LevelDown = $LevelDown
 onready var Pickup = $Pickup
 
 onready var Spawner = $Spawner
+
 
 var HP_LOSS = 30
 var HP_GAIN = 50
@@ -37,12 +39,14 @@ func _on_Spawner_item_picked(type):
 
 
 func lose_hp():
-	Growth.value = max(0, Growth.value - HP_LOSS)
-	if Growth.value == 0:
+	var loss = Growth.value - HP_LOSS
+	if loss < 0:
+		Growth.value = 100 + loss
 		shrink()
 	else:
+		Growth.value = loss
 		Hurt.play()
-		
+	Score.text = str(max(0, int(Score.text) - 10))
 
 
 func gain_hp():
@@ -52,6 +56,7 @@ func gain_hp():
 		Growth.value = 0
 	else:
 		Pickup.play()
+	Score.text = str(int(Score.text) + 10)
 		
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Spawner.tscn" type="PackedScene" id=2]
@@ -14,10 +14,11 @@
 [ext_resource path="res://win.ogg" type="AudioStream" id=12]
 [ext_resource path="res://leveldown.ogg" type="AudioStream" id=13]
 [ext_resource path="res://levelup.ogg" type="AudioStream" id=14]
+[ext_resource path="res://gamer.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0.960784, 0.964706, 0.588235, 1 )
+colors = PoolColorArray( 0.792157, 0.952941, 0.541176, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -25,7 +26,7 @@ width = 50
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0.85098, 0.941176, 0.0431373, 1 )
+colors = PoolColorArray( 0.627451, 0.858824, 0.266667, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
@@ -37,26 +38,30 @@ extents = Vector2( 112, 280 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 88, 240 )
 
+[sub_resource type="DynamicFont" id=7]
+size = 24
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 15 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="bg" type="Sprite" parent="."]
-position = Vector2( 651.005, 363.82 )
+position = Vector2( 651.045, 362.485 )
 scale = Vector2( 1.31503, 0.744387 )
 texture = ExtResource( 4 )
 
 [node name="Growth" type="TextureProgress" parent="."]
 margin_left = 10.0
-margin_top = 513.892
-margin_right = 60.0
-margin_bottom = 713.892
-rect_min_size = Vector2( 50, 200 )
+margin_top = 16.0181
+margin_right = 110.0
+margin_bottom = 36.0181
+rect_min_size = Vector2( 100, 20 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 rounded = true
 texture_under = SubResource( 2 )
 texture_progress = SubResource( 4 )
-fill_mode = 3
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,6 +121,19 @@ stream = ExtResource( 13 )
 
 [node name="Pickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 1172.0
+margin_top = 11.0
+margin_right = 1267.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.584314, 0.796078, 0.254902, 1 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="end_game" from="Player" to="." method="_on_Player_end_game"]
 [connection signal="item_picked" from="Goal" to="." method="_on_Goal_item_picked"]
