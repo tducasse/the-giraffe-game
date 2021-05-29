@@ -29,6 +29,8 @@ func _ready():
 	LevelDown.volume_db = -6
 	LevelUp.volume_db = -6
 	Music.play()
+	Win.pause_mode = Node.PAUSE_MODE_PROCESS
+	Lost.pause_mode = Node.PAUSE_MODE_PROCESS
 
 
 func _on_Spawner_item_picked(type):
@@ -89,12 +91,14 @@ func shrink():
 
 
 func _on_Player_end_game():
+	Growth.value = 0
 	Music.stop()
 	Lost.play()
-	print("lost_game")
+	get_tree().paused = true
 
 
 func _on_Goal_item_picked(_type):
 	Music.stop()
 	Win.play()
-	print("win game")
+	get_tree().paused = true
+
