@@ -1,5 +1,5 @@
 # giraffe-game
 
-[![pipeline status](https://gitlab.com/aldevs/gamedev/gogodotjam/badges/master/pipeline.svg)](https://gitlab.com/aldevs/gamedev/gogodotjam/-/commits/master)
+![image](https://github.com/tducasse/the-giraffe-game/assets/11507599/923a77a0-ad2c-4b3d-a357-f835a37f2900)
 
 - App deployed [here](https://tducasse.itch.io/tally-the-giraffe)
